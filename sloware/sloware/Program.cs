@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using sloware.Models;
+using sloware.Views;
+using sloware.Presenters;
 
 namespace sloware
 {
@@ -16,7 +19,12 @@ namespace sloware
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Model model = new Model();
+            SlowarForm slowarform = new SlowarForm();
+            SlowarFormPresenter slowarformpresenter = new SlowarFormPresenter(model, slowarform);
+
+            Application.Run(slowarform);
         }
     }
 }
