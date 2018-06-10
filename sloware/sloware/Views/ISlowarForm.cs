@@ -17,5 +17,7 @@ namespace sloware.Views
         string[] WordList { set; }
         string[] TranslationList { set; }
         string Examples { set; }
+        int SelectedID { get; set; }
+        int LastID { get; }
     }
 }

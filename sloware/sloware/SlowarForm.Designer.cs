@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.listBoxWords = new System.Windows.Forms.ListBox();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.listBoxTranslations = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxExamples = new System.Windows.Forms.TextBox();
-            this.listBoxWords = new System.Windows.Forms.ListBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.buttonRemove = new System.Windows.Forms.Button();
-            this.buttonEdit = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.listBoxTranslations = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -59,47 +60,6 @@
             this.panel1.Size = new System.Drawing.Size(679, 328);
             this.panel1.TabIndex = 3;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Translations:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Examples:";
-            // 
-            // textBoxExamples
-            // 
-            this.textBoxExamples.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxExamples.Location = new System.Drawing.Point(2, 16);
-            this.textBoxExamples.Multiline = true;
-            this.textBoxExamples.Name = "textBoxExamples";
-            this.textBoxExamples.Size = new System.Drawing.Size(351, 280);
-            this.textBoxExamples.TabIndex = 4;
-            // 
-            // listBoxWords
-            // 
-            this.listBoxWords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxWords.FormattingEnabled = true;
-            this.listBoxWords.Location = new System.Drawing.Point(3, 3);
-            this.listBoxWords.Name = "listBoxWords";
-            this.listBoxWords.Size = new System.Drawing.Size(130, 316);
-            this.listBoxWords.TabIndex = 2;
-            this.listBoxWords.Click += new System.EventHandler(this.listBoxWords_Click);
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -108,6 +68,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.listBoxWords);
             // 
             // splitContainer1.Panel2
@@ -116,6 +77,18 @@
             this.splitContainer1.Size = new System.Drawing.Size(679, 328);
             this.splitContainer1.SplitterDistance = 136;
             this.splitContainer1.TabIndex = 8;
+            // 
+            // listBoxWords
+            // 
+            this.listBoxWords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxWords.FormattingEnabled = true;
+            this.listBoxWords.Location = new System.Drawing.Point(3, 16);
+            this.listBoxWords.Name = "listBoxWords";
+            this.listBoxWords.Size = new System.Drawing.Size(130, 303);
+            this.listBoxWords.TabIndex = 2;
+            this.listBoxWords.Click += new System.EventHandler(this.listBoxWords_Click);
             // 
             // splitContainer2
             // 
@@ -139,27 +112,25 @@
             this.splitContainer2.SplitterDistance = 179;
             this.splitContainer2.TabIndex = 0;
             // 
-            // buttonRemove
+            // listBoxTranslations
             // 
-            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRemove.Location = new System.Drawing.Point(116, 302);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(75, 23);
-            this.buttonRemove.TabIndex = 8;
-            this.buttonRemove.Text = "Remove";
-            this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            this.listBoxTranslations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxTranslations.FormattingEnabled = true;
+            this.listBoxTranslations.Location = new System.Drawing.Point(3, 16);
+            this.listBoxTranslations.Name = "listBoxTranslations";
+            this.listBoxTranslations.Size = new System.Drawing.Size(173, 303);
+            this.listBoxTranslations.TabIndex = 7;
             // 
-            // buttonEdit
+            // label1
             // 
-            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEdit.Location = new System.Drawing.Point(197, 302);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonEdit.TabIndex = 9;
-            this.buttonEdit.Text = "Edit";
-            this.buttonEdit.UseVisualStyleBackColor = true;
-            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Translations:";
             // 
             // buttonAdd
             // 
@@ -172,16 +143,57 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // listBoxTranslations
+            // buttonEdit
             // 
-            this.listBoxTranslations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEdit.Location = new System.Drawing.Point(197, 302);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonEdit.TabIndex = 9;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRemove.Location = new System.Drawing.Point(116, 302);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemove.TabIndex = 8;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Examples:";
+            // 
+            // textBoxExamples
+            // 
+            this.textBoxExamples.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxTranslations.FormattingEnabled = true;
-            this.listBoxTranslations.Location = new System.Drawing.Point(3, 16);
-            this.listBoxTranslations.Name = "listBoxTranslations";
-            this.listBoxTranslations.Size = new System.Drawing.Size(173, 303);
-            this.listBoxTranslations.TabIndex = 7;
+            this.textBoxExamples.Location = new System.Drawing.Point(2, 16);
+            this.textBoxExamples.Multiline = true;
+            this.textBoxExamples.Name = "textBoxExamples";
+            this.textBoxExamples.ReadOnly = true;
+            this.textBoxExamples.Size = new System.Drawing.Size(351, 280);
+            this.textBoxExamples.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "List of words:";
             // 
             // SlowarForm
             // 
@@ -190,10 +202,11 @@
             this.ClientSize = new System.Drawing.Size(679, 328);
             this.Controls.Add(this.panel1);
             this.Name = "SlowarForm";
-            this.Text = "Form1";
+            this.Text = "Slovar";
             this.Load += new System.EventHandler(this.SlowarForm_Load);
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -219,6 +232,7 @@
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.ListBox listBoxTranslations;
+        private System.Windows.Forms.Label label3;
     }
 }
 

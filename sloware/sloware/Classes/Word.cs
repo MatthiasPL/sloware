@@ -17,6 +17,7 @@ namespace sloware.Classes
             this.Translations = translations;
             this.Examples = examples;
         }
+        public Word(string wordtext, string language) { }
         public string WordText { get; set; }
         public string Language { get; set; }
         [XmlArray("Translations")]

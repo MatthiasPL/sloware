@@ -56,6 +56,26 @@ namespace sloware
             }
         }
 
+        public int SelectedID
+        {
+            get
+            {
+                return listBoxWords.SelectedIndex;
+            }
+            set
+            {
+                listBoxWords.SelectedIndex = value;
+            }
+        }
+
+        public int LastID
+        {
+            get
+            {
+                return listBoxWords.Items.Count-1;
+            }
+        }
+
         public event Action<object, EventArgs> VEventOnAdd;
         public event Action<object, EventArgs> VEventOnEdit;
         public event Action<object, EventArgs> VEventOnLoad;

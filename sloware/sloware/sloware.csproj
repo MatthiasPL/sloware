@@ -49,8 +49,15 @@
     <Compile Include="Classes\Dictionary.cs" />
     <Compile Include="Classes\Example.cs" />
     <Compile Include="Classes\Translation.cs" />
+    <Compile Include="Classes\Windows\EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\Windows\EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Word.cs" />
     <Compile Include="Models\Model.cs" />
+    <Compile Include="Presenters\EditFormPresenter.cs" />
     <Compile Include="Presenters\SlowarFormPresenter.cs" />
     <Compile Include="SlowarForm.cs">
       <SubType>Form</SubType>
@@ -60,7 +67,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IEditForm.cs" />
     <Compile Include="Views\ISlowarForm.cs" />
+    <EmbeddedResource Include="Classes\Windows\EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SlowarForm.resx">
       <DependentUpon>SlowarForm.cs</DependentUpon>
     </EmbeddedResource>
