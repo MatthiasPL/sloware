@@ -32,6 +32,10 @@ namespace sloware.Classes.Windows
             {
                 textBoxExamples.Text = value;
             }
+            get
+            {
+                return textBoxExamples.Text;
+            }
         }
 
         public string ExampleTranslation
@@ -84,6 +88,51 @@ namespace sloware.Classes.Windows
             {
                 return textBoxWord.Text;
             }
+            set
+            {
+                textBoxWord.Text = value;
+            }
+        }
+
+        public int LineNumber
+        {
+            get
+            {
+                return Int16.Parse(comboBoxLineNumber.Text);
+            }
+        }
+
+        public string[] LineNumbers
+        {
+            set
+            {
+                if (value != null)
+                {
+                    comboBoxLineNumber.Items.Clear();
+                    comboBoxLineNumber.Items.AddRange(value);
+                }
+            }
+        }
+
+        public int SelectedID
+        {
+            get
+            {
+                return listBoxTranslations.SelectedIndex;
+            }
+        }
+
+        public Button ButtonSubmit
+        {
+            get
+            {
+                return buttonSubmit;
+            }
+
+            set
+            {
+                buttonSubmit = value;
+            }
         }
 
         public event Action<object, EventArgs> VEventOnAddExample;
@@ -104,27 +153,43 @@ namespace sloware.Classes.Windows
 
         private void buttonRemoveTranslation_Click(object sender, EventArgs e)
         {
-
+            if (VEventOnRemoveTranslation != null)
+            {
+                VEventOnRemoveTranslation(sender, e);
+            }
         }
 
         private void buttonRemoveExample_Click(object sender, EventArgs e)
         {
-
+            if (VEventOnRemoveExample != null)
+            {
+                VEventOnRemoveExample(sender, e);
+            }
         }
 
         private void buttonAddExample_Click(object sender, EventArgs e)
         {
-
+            if (VEventOnAddExample != null)
+            {
+                VEventOnAddExample(sender, e);
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-
+            if (VEventOnCancel != null)
+            {
+                VEventOnCancel(sender, e);
+                this.Close();
+            }
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-
+            if (VEventOnSubmit != null)
+            {
+                VEventOnSubmit(sender, e);
+            }
         }
 
         private void buttonAddTranslation_Click(object sender, EventArgs e)

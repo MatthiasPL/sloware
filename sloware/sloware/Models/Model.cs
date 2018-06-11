@@ -16,18 +16,22 @@ namespace sloware.Models
         private Dictionary dictionary;
         private int wordID=-1;
         #region Dictionary
-        public void AddWord(string wordtext, string language,List<Translation> translations, List<Example> examples)
+        public void AddWordToDictionary(Word word)
         {
-            this.dictionary.Words.Add(new Word(wordtext, language, translations, examples));
+            this.dictionary.Words.Add(word);
+        }
+        public void AddWord(string wordtext, List<Translation> translations, List<Example> examples)
+        {
+            this.dictionary.Words.Add(new Word(wordtext, translations, examples));
             SaveDictionaryToFile(dictionary);
         }
         public void AddWord()
         {
             this.dictionary.Words.Add(new Word());
         }
-        public void AddWord(string wordtext, string language)
+        public void AddWord(string wordtext)
         {
-            this.dictionary.Words.Add(new Word(wordtext, language));
+            this.dictionary.Words.Add(new Word(wordtext));
         }
         public void AddTranslation(string translationtext, string language, int wordid)
         {
@@ -68,9 +72,20 @@ namespace sloware.Models
             foreach (var word in LoadDictionary().Words)
             {
                 words.Add(word.WordText.ToString());
-                Console.WriteLine(word.WordText.ToString());
             }
             return words.ToArray();
+        }
+        public string LoadWord(int wordID)
+        {
+            return dictionary.Words[wordID].WordText;
+        }
+        public List<Translation> GetTranslations(int wordID)
+        {
+            return dictionary.Words[wordID].Translations;
+        }
+        public List<Example> GetExamples(int wordID)
+        {
+            return dictionary.Words[wordID].Examples;
         }
         public string[] LoadTranslations(int id)
         {
@@ -101,22 +116,65 @@ namespace sloware.Models
 
             for (int i = 0; i < LoadDictionary().Words[id].Examples.Count(); i++)
             {
-                examples=examples+ LoadDictionary().Words[id].Examples[i].ExampleText + " | " + LoadDictionary().Words[id].Examples[i].ExampleTranslation + " | " + LoadDictionary().Words[id].Examples[i].Language + "\n";
+                examples=examples+ LoadDictionary().Words[id].Examples[i].ExampleText + " | " + LoadDictionary().Words[id].Examples[i].ExampleTranslation + " | " + LoadDictionary().Words[id].Examples[i].Language + "\r\n";
             }
 
             return examples;
+        }
+        public string LoadExamples(List<Example> examples)
+        {
+            string stringExamples = "";
+
+            for (int i = 0; i < examples.Count(); i++)
+            {
+                stringExamples = stringExamples + examples[i].ExampleText + " | " + examples[i].ExampleTranslation + " | " + examples[i].Language + "\r\n";
+            }
+
+            return stringExamples;
         }
         public void DisableForm(Form form)
         {
             form.Enabled = false;
         }
-        public void setWordID(int id)
+        public void SetWordID(int id)
         {
             wordID = id;
         }
-        public int getWordID()
+        public int GetWordID()
         {
             return wordID;
+        }
+        public int GetNumberOfLines(string text)
+        {
+            int counter = text.Count(f => f == '\r') - 1;
+            return counter;
+        }
+        public string[] ListOfLines(string text)
+        {
+            int counter = text.Count(f => f == '\r') + 1;
+            List<string> listOfLines = new List<string>();
+
+            for(int i = 1; i < counter; i++)
+            {
+                listOfLines.Add((i).ToString());
+            }
+
+            return listOfLines.ToArray();
+        }
+        public void ShowErrorBox(string text, string title)
+        {
+            MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        public void RemoveTheSame()
+        {
+            List<Word> words = new List<Word>();
+            for(int i = 0; i < dictionary.Words.Count; i++)
+            {
+                foreach(var wordtext in dictionary.Words)
+                {
+
+                }
+            }
         }
     }
 }

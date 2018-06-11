@@ -38,24 +38,52 @@ namespace sloware.Presenters
             {
                 model.RemoveWord(slowarform.SelectedID);
                 slowarform.WordList = model.LoadWords();
+                model.SaveDictionaryToFile(model.LoadDictionary());
             }
         }
         public void View_VEventOnAdd(object arg1, EventArgs arg2)
         {
             slowarform.SelectedID = -1;
-            model.setWordID(slowarform.SelectedID);
+            model.SetWordID(slowarform.SelectedID);
             EditForm editform = new EditForm();
             EditFormPresenter editformpresenter = new EditFormPresenter(model, editform);
-            editform.Show();
+            var dialogResult = editform.ShowDialog();
+            if (editform.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                model.LoadDictionary();
+                model.RemoveTheSame();
+                model.SaveDictionaryToFile(model.LoadDictionary());
+                slowarform.WordList = model.LoadWords();
+                editform.Dispose();
+            }
+            else if (editform.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+            {
+                model.LoadDictionaryFromFile();
+                editform.Dispose();
+            }
         }
         public void View_VEventOnEdit(object arg1, EventArgs arg2)
         {
             if (slowarform.SelectedID != -1)
             {
-                model.setWordID(slowarform.SelectedID);
+                model.SetWordID(slowarform.SelectedID);
                 EditForm editform = new EditForm();
                 EditFormPresenter editformpresenter = new EditFormPresenter(model, editform);
-                editform.Show();
+                var dialogResult = editform.ShowDialog();
+
+                if(editform.DialogResult == System.Windows.Forms.DialogResult.OK)
+                {
+                    editform.Dispose();
+                    model.LoadDictionary();
+                    slowarform.WordList = model.LoadWords();
+                    model.SaveDictionaryToFile(model.LoadDictionary());
+
+                }
+                else if(editform.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    model.LoadDictionaryFromFile();
+                    editform.Dispose();
+                }
             }
         }
         public void View_VEventOnWordSelect(object arg1, EventArgs arg2)

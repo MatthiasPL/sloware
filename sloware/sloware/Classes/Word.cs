@@ -10,20 +10,23 @@ namespace sloware.Classes
     public class Word
     {
         public Word() { }
-        public Word(string wordtext, string language, List<Translation> translations, List<Example> examples)
+        public Word(string wordtext, List<Translation> translations, List<Example> examples)
         {
             this.WordText = wordtext;
-            this.Language = language;
+            //this.Language = language;
             this.Translations = translations;
             this.Examples = examples;
         }
-        public Word(string wordtext, string language) { }
+        public Word(string wordtext)
+        {
+            this.WordText = wordtext;
+        }
         public string WordText { get; set; }
-        public string Language { get; set; }
+        //public string Language { get; set; }
         [XmlArray("Translations")]
         [XmlArrayItem("Translation")]
         public List<Translation> Translations { get; set; }
-        [XmlArray("Exxamples")]
+        [XmlArray("Examples")]
         [XmlArrayItem("Example")]
         public List<Example> Examples { get; set; }
     }
