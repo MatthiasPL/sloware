@@ -10,6 +10,10 @@ namespace sloware.Classes
     public class Dictionary
     {
         public Dictionary() { }
+        public Dictionary(List<Word> words)
+        {
+            this.Words = words;
+        }
         [XmlArray("Words")]
         [XmlArrayItem("Word")]
         public List<Word> Words { get; set; }

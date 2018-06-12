@@ -48,19 +48,31 @@ namespace sloware.Models
         #endregion
         public void LoadDictionaryFromFile()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Dictionary));
-            Dictionary dictionary = null;
-            StreamReader reader = new StreamReader("file.xml");
+            if (File.Exists("file.xml"))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Dictionary));
+                Dictionary dictionary = null;
+                StreamReader reader = new StreamReader("file.xml");
 
-            dictionary = (Dictionary)serializer.Deserialize(reader);
-            reader.Close();
+                dictionary = (Dictionary)serializer.Deserialize(reader);
+                reader.Close();
 
-            this.dictionary = dictionary;
+                this.dictionary = dictionary;
+            }
+            else
+            {
+                CreateEmptyDictionary();
+                SaveDictionaryToFile(this.dictionary);
+                this.dictionary = new Dictionary();
+            }
+            
         }
         public void SaveDictionaryToFile(Dictionary dictionary)
         {
+            StreamWriter stream = new StreamWriter("file.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(Dictionary));
-            serializer.Serialize(File.Create("file.xml"), dictionary);
+            serializer.Serialize(stream, dictionary);
+            stream.Close();
         }
         public Dictionary LoadDictionary()
         {
@@ -175,6 +187,14 @@ namespace sloware.Models
 
                 }
             }
+        }
+        private void CreateEmptyDictionary()
+        {
+            Translation translation = new Translation("example", "English");
+            Example example = new Example("To jest przykład.", "This is an example.", "English");
+            Word word = new Word("przykład", new List<Translation> { translation }, new List<Example> { example});
+            this.dictionary = new Dictionary(new List<Word> { word });
+            AddWordToDictionary(word);
         }
     }
 }
