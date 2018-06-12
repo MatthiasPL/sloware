@@ -48,19 +48,20 @@ namespace sloware.Presenters
             EditForm editform = new EditForm();
             EditFormPresenter editformpresenter = new EditFormPresenter(model, editform);
             var dialogResult = editform.ShowDialog();
-            if (editform.DialogResult == System.Windows.Forms.DialogResult.OK)
+
+            if (editform.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+            {
+                model.LoadDictionaryFromFile();
+                editform.Dispose();
+            }
+            else
             {
                 model.LoadDictionary();
                 model.RemoveTheSame();
                 model.SaveDictionaryToFile(model.LoadDictionary());
                 slowarform.WordList = model.LoadWords();
-                editform.Dispose();
             }
-            else if (editform.DialogResult == System.Windows.Forms.DialogResult.Cancel)
-            {
-                model.LoadDictionaryFromFile();
-                editform.Dispose();
-            }
+            editform.Close();
         }
         public void View_VEventOnEdit(object arg1, EventArgs arg2)
         {
@@ -71,18 +72,17 @@ namespace sloware.Presenters
                 EditFormPresenter editformpresenter = new EditFormPresenter(model, editform);
                 var dialogResult = editform.ShowDialog();
 
-                if(editform.DialogResult == System.Windows.Forms.DialogResult.OK)
+                if(editform.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    model.LoadDictionaryFromFile();
+                    editform.Dispose();
+                }
+                else
                 {
                     editform.Dispose();
                     model.LoadDictionary();
                     slowarform.WordList = model.LoadWords();
                     model.SaveDictionaryToFile(model.LoadDictionary());
-
-                }
-                else if(editform.DialogResult == System.Windows.Forms.DialogResult.Cancel)
-                {
-                    model.LoadDictionaryFromFile();
-                    editform.Dispose();
                 }
             }
         }

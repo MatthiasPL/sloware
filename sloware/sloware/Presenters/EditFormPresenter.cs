@@ -109,15 +109,11 @@ namespace sloware.Presenters
             if (editform.WordText != "")
             {
                 Button tempButton = editform.ButtonSubmit;
-                if (tempButton.DialogResult.Equals(DialogResult.OK))
-                {
-                    tempWord = new Word(editform.WordText, tempTranslations, tempExamples);
-                    //if(!model.LoadDictionary().Words.Contains(tempWord))
-                    if (model.GetWordID() == -1)
-                        model.AddWordToDictionary(tempWord);
-                }
                 tempButton.DialogResult = DialogResult.OK;
                 editform.ButtonSubmit = tempButton;
+                tempWord = new Word(editform.WordText, tempTranslations, tempExamples);
+                if (model.GetWordID() == -1)
+                    model.AddWordToDictionary(tempWord);
             }
             else
             {
