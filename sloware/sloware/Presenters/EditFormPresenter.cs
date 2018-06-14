@@ -116,8 +116,13 @@ namespace sloware.Presenters
                     if (model.GetWordID() == -1)
                         model.AddWordToDictionary(tempWord);
                 }
-                tempButton.DialogResult = DialogResult.OK;
-                editform.ButtonSubmit = tempButton;
+                else
+                {
+                    tempButton.DialogResult = DialogResult.OK;
+                    editform.ButtonSubmit = tempButton;
+                    editform.ButtonSubmit.PerformClick();
+                }
+                
             }
             else
             {

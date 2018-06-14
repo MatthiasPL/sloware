@@ -39,6 +39,9 @@ namespace sloware.Presenters
                 model.RemoveWord(slowarform.SelectedID);
                 slowarform.WordList = model.LoadWords();
                 model.SaveDictionaryToFile(model.LoadDictionary());
+
+                slowarform.Examples = "";
+                slowarform.TranslationList = new string[] { };
             }
         }
         public void View_VEventOnAdd(object arg1, EventArgs arg2)
@@ -47,6 +50,10 @@ namespace sloware.Presenters
             model.SetWordID(slowarform.SelectedID);
             EditForm editform = new EditForm();
             EditFormPresenter editformpresenter = new EditFormPresenter(model, editform);
+
+            slowarform.Examples = "";
+            slowarform.TranslationList = new string[] { };
+
             var dialogResult = editform.ShowDialog();
 
             if (editform.DialogResult == System.Windows.Forms.DialogResult.Cancel)
@@ -70,6 +77,10 @@ namespace sloware.Presenters
                 model.SetWordID(slowarform.SelectedID);
                 EditForm editform = new EditForm();
                 EditFormPresenter editformpresenter = new EditFormPresenter(model, editform);
+
+                slowarform.Examples = "";
+                slowarform.TranslationList = new string[] { };
+
                 var dialogResult = editform.ShowDialog();
 
                 if(editform.DialogResult == System.Windows.Forms.DialogResult.Cancel)
